@@ -5,7 +5,6 @@ import Logo from "../images/logo.png"
 import "../styles/index.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 export default class IndexPage extends React.Component {
     state = {
         nam1: null,
@@ -48,23 +47,42 @@ export default class IndexPage extends React.Component {
     render() {
         return (
             <div className="d-flex justify-content-center">
-            <Form onSubmit={this._handleSubmit} className="text-center subscribe">
-            <img className="mb-4" src={Logo} alt="Developer Jahid" />
-            <FormGroup>
-                <Input onChange={this._handleChange} type="text" name="nam1" id="exampleName" placeholder="First Name" />
-            </FormGroup>
-            <FormGroup>
-                <Input onChange={this._handleChange} type="text" name="nam2" id="exampleName" placeholder="Last Name" />
-            </FormGroup>
-            <FormGroup>
-                <Input onChange={this._handleChange} type="email" name="email" id="exampleEmail" placeholder="Email Address" />
-            </FormGroup>
-            <Button type="submit" color="primary">Submit</Button>
-            <p className="me">Developed by <a href="https://developerjahid.com">Developer Jahid</a></p>
-            <p>hire me: contact@developerjahid.com</p>
-            <p>developerjahid.com</p>
-        </Form>
-    </div>
+                <Form onSubmit={this._handleSubmit} className="text-center subscribe">
+                    <img className="mb-4" src={Logo} alt="Developer Jahid" />
+                    <FormGroup>
+                    <Input
+                        onChange={this._handleChange}
+                        type="text"
+                        name="nam1"
+                        placeholder="First Name"
+                    />
+                    </FormGroup>
+                    <FormGroup>
+                    <Input
+                        onChange={this._handleChange}
+                        type="text"
+                        name="nam2"
+                        placeholder="Last Name"
+                    />
+                    </FormGroup>
+                    <FormGroup>
+                    <Input
+                        onChange={this._handleChange}
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                    />
+                    </FormGroup>
+                    <Button type="submit" color="primary">
+                    Submit
+                    </Button>
+                    <p className="me">
+                    Developed by <a href="https://developerjahid.com">Developer Jahid</a>
+                    </p>
+                    <p>hire me: contact@developerjahid.com</p>
+                    <p>developerjahid.com</p>
+                </Form>
+            </div>
         );
     }
 }
