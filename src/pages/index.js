@@ -9,49 +9,41 @@ export default class IndexPage extends React.Component {
     state = {
         nam1: null,
         nam2:null,
-        email: null,
+        email: null
     }
 
-    _handleChange = (e) => {
-        console.log({
-            [`${e.target.name}`]: e.target.value,
-        });
+    handleChange = (e) => {
         this.setState({
             [`${e.target.name}`]: e.target.value,
         });
     }
 
-    _handleSubmit = (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
-
-        console.log('submit', this.state);
 
         addToMailchimp(this.state.email, {
             FIRSTNAME: this.state.nam1,
             LASTNAME: this.state.nam2
           })
-            .then(({ msg, result }) => {
-                console.log('msg', `${result}: ${msg}`);
-
-                if (result !== 'success') {
-                    throw msg;
-                }
-                alert(msg);
-            })
-            .catch((err) => {
-                console.log('err', err);
-                alert(err);
-            });
+        .then(({ msg, result }) => {
+            if (result !== 'success') {
+                throw msg;
+            }
+            alert(msg);
+        })
+        .catch((err) => {
+            alert(err);
+        });
     }
 
     render() {
         return (
             <div className="d-flex justify-content-center">
-                <Form onSubmit={this._handleSubmit} className="text-center subscribe">
+                <Form onSubmit={this.handleSubmit} className="text-center subscribe">
                     <img className="mb-4" src={Logo} alt="Developer Jahid" />
                     <FormGroup>
                     <Input
-                        onChange={this._handleChange}
+                        onChange={this.handleChange}
                         type="text"
                         name="nam1"
                         placeholder="First Name"
@@ -59,7 +51,7 @@ export default class IndexPage extends React.Component {
                     </FormGroup>
                     <FormGroup>
                     <Input
-                        onChange={this._handleChange}
+                        onChange={this.handleChange}
                         type="text"
                         name="nam2"
                         placeholder="Last Name"
@@ -67,7 +59,7 @@ export default class IndexPage extends React.Component {
                     </FormGroup>
                     <FormGroup>
                     <Input
-                        onChange={this._handleChange}
+                        onChange={this.handleChange}
                         type="email"
                         name="email"
                         placeholder="Email Address"
